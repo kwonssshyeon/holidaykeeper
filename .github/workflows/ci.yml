@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build:
@@ -39,8 +41,11 @@ jobs:
         run: ./gradlew clean build
 
       - name: 테스트 결과 리포트
-        if: always()
-        uses: actions/upload-artifact@v4
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: ${{ always() }}
         with:
-          name: test-results
-          path: build/test-results/test
+          files: build/test-results/**/*.xml
+          check_name: "test report"
+          comment_title: "Test Result"
+          fail_on: "test failures"
+          report_individual_runs: "true"
