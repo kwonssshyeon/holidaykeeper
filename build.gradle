@@ -19,7 +19,13 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	// Web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// H2 Database
+	runtimeOnly 'com.h2database:h2'
+
+	// Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
