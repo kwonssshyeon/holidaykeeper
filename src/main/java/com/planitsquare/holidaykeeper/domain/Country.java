@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "contries")
+@Table(name = "countries")
 public class Country {
     @Id
     @Column(nullable = false, length = 2)
