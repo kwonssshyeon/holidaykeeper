@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 )
 public class Holiday {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)
@@ -48,4 +48,20 @@ public class Holiday {
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    private Holiday(LocalDate date, String name, String localName, Country country,
+                    boolean fixed, boolean global, Integer launchYear) {
+        this.date = date;
+        this.name = name;
+        this.localName = localName;
+        this.country = country;
+        this.fixed = fixed;
+        this.global = global;
+        this.launchYear = launchYear;
+    }
+
+    public static Holiday of(LocalDate date, String name, String localName, Country country,
+                             boolean fixed, boolean global, Integer launchYear) {
+        return new Holiday(date, name, localName, country, fixed, global, launchYear);
+    }
 }
