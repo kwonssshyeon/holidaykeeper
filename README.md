@@ -8,7 +8,7 @@
 | **feature/common-for-api**  | [#10](https://github.com/kwonssshyeon/holidaykeeper/issues/10) | [#11](https://github.com/kwonssshyeon/holidaykeeper/pull/11) | API 공통 모듈(응답, 예외 처리) 구성 |
 | **feature/data-initialize** | [#8](https://github.com/kwonssshyeon/holidaykeeper/issues/8)   | [#9](https://github.com/kwonssshyeon/holidaykeeper/pull/9)   | 초기 데이터 적재 로직 구현         |
 | **feature/data-load**       | [#6](https://github.com/kwonssshyeon/holidaykeeper/issues/6)   | [#7](https://github.com/kwonssshyeon/holidaykeeper/pull/7)   | 공휴일 API 데이터 로드 기능       |
-| **feature/data-modeling**   | [#4](https://github.com/kwonssshyeon/holidaykeeper/issues/4)   | [#5](https://github.com/kwonssshyeon/holidaykeeper/pull/5)   | 공휴일/국가/카운티 모델링          |
+| **feature/data-modeling**   | [#4](https://github.com/kwonssshyeon/holidaykeeper/issues/4)   | [#5](https://github.com/kwonssshyeon/holidaykeeper/pull/5)   | 공휴일/국가 모델링          |
 | **chore/ci**                | [#2](https://github.com/kwonssshyeon/holidaykeeper/issues/2)   | [#3](https://github.com/kwonssshyeon/holidaykeeper/pull/3)   | CI 설정, 빌드/테스트 파이프라인 구성  |
 
 
@@ -33,7 +33,7 @@
 | 이름 | 타입 | 필수 | 기본값 | 설명 |
 |------|------|------|--------|------|
 | `countryCode` | string | ❌ | — | ISO 국가 코드 |
-| `year` | int | ❌ | 현재 연도 | 조회 연도 |
+| `year` | int | ❌ | — | 조회 연도 |
 | `page` | int | ❌ | 0 | 페이지 번호 |
 | `size` | int | ❌ | 20 | 페이지 크기 |
 
