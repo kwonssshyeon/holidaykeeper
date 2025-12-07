@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Repository
 public interface HolidayRepository extends JpaRepository<Holiday, Long> {
@@ -25,4 +26,12 @@ public interface HolidayRepository extends JpaRepository<Holiday, Long> {
             @Param("end") LocalDate end,
             Pageable pageable
     );
+
+    @Query("""
+        SELECT h FROM Holiday h
+        LEFT JOIN FETCH h.types t
+        LEFT JOIN FETCH h.counties c
+        WHERE h.id = :id
+    """)
+    Optional<Holiday> findByIdWithTypesAndCounties(@Param("id") Long id);
 }
