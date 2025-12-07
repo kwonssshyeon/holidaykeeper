@@ -10,6 +10,7 @@ public enum CustomCode {
     DELETED(200, "리소스가 성공적으로 삭제되었습니다."),
 
     INVALID_REQUEST(400, "잘못된 요청입니다."),
+    NOT_FOUND(404, "요청한 리소스를 찾을 수 없습니다."),
     INTERNAL_SERVER_ERROR(500, "서버 내부 오류입니다.");
 
     private final int status;
