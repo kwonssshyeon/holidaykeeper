@@ -1,8 +1,5 @@
 package com.planitsquare.holidaykeeper.global.response;
 
-import lombok.Getter;
-
-@Getter
 public record ApiResponse<T>(
         int status,
         String message,
