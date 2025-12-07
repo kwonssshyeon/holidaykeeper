@@ -9,6 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -49,6 +51,13 @@ public class Holiday {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "holiday", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<HolidayCounty> counties = new HashSet<>();
+
+    // HolidayType 엔티티와 1:N 관계 설정
+    @OneToMany(mappedBy = "holiday", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<HolidayType> types = new HashSet<>();
+
     private Holiday(LocalDate date, String name, String localName, Country country,
                     boolean fixed, boolean global, Integer launchYear) {
         this.date = date;
@@ -63,5 +72,15 @@ public class Holiday {
     public static Holiday of(LocalDate date, String name, String localName, Country country,
                              boolean fixed, boolean global, Integer launchYear) {
         return new Holiday(date, name, localName, country, fixed, global, launchYear);
+    }
+
+    public void addCounty(String countyCode) {
+        HolidayCounty county = new HolidayCounty(this, countyCode);
+        this.counties.add(county);
+    }
+
+    public void addType(String typeName) {
+        HolidayType type = new HolidayType(this, typeName);
+        this.types.add(type);
     }
 }
