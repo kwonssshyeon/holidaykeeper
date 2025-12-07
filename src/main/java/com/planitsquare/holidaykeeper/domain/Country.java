@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "contries")
+@Table(name = "countries")
 public class Country {
     @Id
     @Column(nullable = false, length = 2)
@@ -15,4 +15,13 @@ public class Country {
 
     @Column(nullable = false, length = 100)
     private String name;
+
+    private Country(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
+    public static Country of(String code, String name) {
+        return new Country(code, name);
+    }
 }
