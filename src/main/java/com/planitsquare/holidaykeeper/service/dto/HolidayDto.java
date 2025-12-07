@@ -5,6 +5,7 @@ import com.planitsquare.holidaykeeper.domain.Holiday;
 import java.time.LocalDate;
 
 public record HolidayDto (
+        Long id,
         LocalDate date,
         String name,
         String localName,
@@ -16,6 +17,7 @@ public record HolidayDto (
 ) {
     public static HolidayDto from(Holiday holiday) {
         return new HolidayDto(
+                holiday.getId(),
                 holiday.getDate(),
                 holiday.getName(),
                 holiday.getLocalName(),
